@@ -39,9 +39,12 @@ function displayPagination(total_pages){
 }
 
 async function loadUserDetails(userId){
-    fetch(baseUrl+"users/"+userId)
-    .then( response => response.json() )
-    .then( (responseJSON) => showSingleUserDetails(responseJSON.data) );
+
+    let response = await fetch(baseUrl+"users/"+userId);
+    let responseJSON = await response.json();
+
+    showSingleUserDetails(responseJSON.data);
+
 }
 
 function showSingleUserDetails(user){
